@@ -4,11 +4,22 @@ import { Component } from "react";
 class App extends Component {
   state = {
     persons: [
-      { name: "Tony", job: "developer" },
+      { name: "Long", job: "developer" },
       { name: "Truc", job: "block-chain developer" },
       { name: "Viet", job: "developer" },
       { name: "Tai", job: "photographer" },
     ],
+  };
+  switchLeader = () => {
+    console.log("clicked");
+    this.setState({
+      persons: [
+        { name: "Long Tran", job: "developer" },
+        { name: "Truc", job: "block-chain developer" },
+        { name: "Viet", job: "developer" },
+        { name: "Tai", job: "photographer" },
+      ],
+    });
   };
   render() {
     return (
@@ -21,7 +32,9 @@ class App extends Component {
         </h1>
         <h3>Im leading a project</h3>
         <p>Here are our members</p>
-        <button>Change leader</button>
+
+        <button onClick={this.switchLeader}>Change leader</button>
+
         <Person
           name={this.state.persons[1].name}
           job={this.state.persons[1].job}
@@ -30,10 +43,7 @@ class App extends Component {
           name={this.state.persons[2].name}
           job={this.state.persons[2].job}
         />
-        <Person
-          name={this.state.persons[3].name}
-          job={this.state.persons[3].job}
-        >
+        <Person name="tai-props" job="photographer">
           My hobby is to be a photographer! Especially
         </Person>
       </div>
