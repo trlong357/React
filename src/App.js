@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+import "./App.css";
+import Person from "./Person/Person";
+import { Component } from "react";
+class App extends Component {
+  state = {
+    persons: [
+      { name: "Tony", job: "developer" },
+      { name: "Truc", job: "block-chain developer" },
+      { name: "Viet", job: "developer" },
+      { name: "Tai", job: "photographer" },
+    ],
+  };
+  render() {
+    return (
+      <div className="App">
+        <h1>
+          <Person
+            name={this.state.persons[0].name}
+            job={this.state.persons[0].job}
+          />
+        </h1>
+        <h3>Im leading a project</h3>
+        <p>Here are our members</p>
+        <button>Change leader</button>
+        <Person
+          name={this.state.persons[1].name}
+          job={this.state.persons[1].job}
+        />
+        <Person
+          name={this.state.persons[2].name}
+          job={this.state.persons[2].job}
+        />
+        <Person
+          name={this.state.persons[3].name}
+          job={this.state.persons[3].job}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          My hobby is to be a photographer! Especially
+        </Person>
+      </div>
+    );
+  }
 }
 
 export default App;
