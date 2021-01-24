@@ -1,6 +1,7 @@
 import "./App.css";
 import Person from "./Person/Person";
 import { Component } from "react";
+
 class App extends Component {
   state = {
     persons: [
@@ -10,31 +11,34 @@ class App extends Component {
       { name: "Tai", job: "photographer" },
     ],
   };
-  switchLeader = () => {
+
+  switchName = (newName) => {
     console.log("clicked");
     this.setState({
       persons: [
-        { name: "Long Tran", job: "developer" },
-        { name: "Truc", job: "block-chain developer" },
-        { name: "Viet", job: "developer" },
-        { name: "Tai", job: "photographer" },
+        { name: newName, job: "developer" },
+        { name: "Truc Pham", job: "block-chain developer" },
+        { name: "Viet Trinh", job: "developer" },
+        { name: "Tai Nguyen", job: "photographer" },
       ],
+      leaders: [],
     });
   };
+  // switchLeader = (i) => {
+  //   this.setState({ leaders: "Long" });
+  //   console.log(this.state.leaders);
+  // };
   render() {
+    let Leader = this.props;
     return (
       <div className="App">
-        <h1>
-          <Person
-            name={this.state.persons[0].name}
-            job={this.state.persons[0].job}
-          />
-        </h1>
-        <h3>Im leading a project</h3>
+        <h1>IT team</h1>
         <p>Here are our members</p>
-
-        <button onClick={this.switchLeader}>Change leader</button>
-
+        <Person
+          name={this.state.persons[0].name}
+          job={this.state.persons[0].job}
+          click={this.switchName.bind(this, "Long")}
+        />
         <Person
           name={this.state.persons[1].name}
           job={this.state.persons[1].job}
@@ -46,6 +50,16 @@ class App extends Component {
         <Person name="tai-props" job="photographer">
           My hobby is to be a photographer! Especially
         </Person>
+        <h1>
+          <Person
+            name={this.state.persons[0].name}
+            job={this.state.persons[0].job}
+          />
+        </h1>
+        <h3>Leader's Name: {this.state.persons[0].name}</h3>
+        <button onClick={() => this.switchName("Long Tran")}>
+          Change name
+        </button>
       </div>
     );
   }
