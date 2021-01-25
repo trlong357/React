@@ -10,8 +10,9 @@ class App extends Component {
       { name: "Viet", job: "developer" },
       { name: "Tai", job: "photographer" },
     ],
+    leaderName: "",
   };
-
+  text;
   switchName = (newName) => {
     console.log("clicked");
     this.setState({
@@ -21,7 +22,11 @@ class App extends Component {
         { name: "Viet Trinh", job: "developer" },
         { name: "Tai Nguyen", job: "photographer" },
       ],
-      leaders: [],
+    });
+  };
+  changeName = (event) => {
+    this.setState({
+      leaderName: event.target.value,
     });
   };
   // switchLeader = (i) => {
@@ -29,7 +34,6 @@ class App extends Component {
   //   console.log(this.state.leaders);
   // };
   render() {
-    let Leader = this.props;
     return (
       <div className="App">
         <h1>IT team</h1>
@@ -56,10 +60,17 @@ class App extends Component {
             job={this.state.persons[0].job}
           />
         </h1>
-        <h3>Leader's Name: {this.state.persons[0].name}</h3>
         <button onClick={() => this.switchName("Long Tran")}>
           Change name
         </button>
+
+        <h3>Leader's Name: {this.state.leaderName}</h3>
+        <p>Type the input below to choose Leader</p>
+        <input
+          type="text"
+          onChange={this.changeName}
+          // value={this.state.leaderName}
+        ></input>
       </div>
     );
   }
