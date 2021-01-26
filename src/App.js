@@ -1,6 +1,7 @@
 import "./App.css";
 import Person from "./Person/Person";
 import { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   state = {
@@ -12,12 +13,21 @@ class App extends Component {
     ],
     leaderName: "",
   };
-  text;
-  switchName = (newName) => {
+  switchNameBack = () => {
+    this.setState({
+      persons: [
+        { name: "Long", job: "developer" },
+        { name: "Truc", job: "block-chain developer" },
+        { name: "Viet", job: "developer" },
+        { name: "Tai", job: "photographer" },
+      ],
+    });
+  };
+  switchName = () => {
     console.log("clicked");
     this.setState({
       persons: [
-        { name: newName, job: "developer" },
+        { name: "Long Tran", job: "developer" },
         { name: "Truc Pham", job: "block-chain developer" },
         { name: "Viet Trinh", job: "developer" },
         { name: "Tai Nguyen", job: "photographer" },
@@ -35,34 +45,30 @@ class App extends Component {
   // };
   render() {
     return (
-      <div className="App">
+      <div className="App container">
         <h1>IT team</h1>
         <p>Here are our members</p>
-        <Person
-          name={this.state.persons[0].name}
-          job={this.state.persons[0].job}
-          click={this.switchName.bind(this, "Long")}
-        />
-        <Person
-          name={this.state.persons[1].name}
-          job={this.state.persons[1].job}
-        />
-        <Person
-          name={this.state.persons[2].name}
-          job={this.state.persons[2].job}
-        />
-        <Person name="tai-props" job="photographer">
-          My hobby is to be a photographer! Especially
-        </Person>
-        <h1>
+        <div className="row">
           <Person
             name={this.state.persons[0].name}
             job={this.state.persons[0].job}
+            click={this.switchName.bind(this, "Long")}
           />
-        </h1>
-        <button onClick={() => this.switchName("Long Tran")}>
-          Change name
-        </button>
+          <Person
+            name={this.state.persons[1].name}
+            job={this.state.persons[1].job}
+          />
+          <Person
+            name={this.state.persons[2].name}
+            job={this.state.persons[2].job}
+          />
+          <Person name="tai-props" job="photographer">
+            My hobby is to be a photographer! Especially
+          </Person>
+        </div>
+        <button onClick={() => this.switchName()}>Change name</button>
+
+        <button onClick={() => this.switchNameBack()}>Revert name</button>
 
         <h3>Leader's Name: {this.state.leaderName}</h3>
         <p>Type the input below to choose Leader</p>
