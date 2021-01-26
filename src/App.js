@@ -12,6 +12,7 @@ class App extends Component {
       { name: "Tai", job: "photographer" },
     ],
     leaderName: "",
+    showPersons: false,
   };
   switchNameBack = () => {
     this.setState({
@@ -22,6 +23,10 @@ class App extends Component {
         { name: "Tai", job: "photographer" },
       ],
     });
+  };
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({ showPersons: !doesShow });
   };
   switchName = () => {
     console.log("clicked");
@@ -54,25 +59,33 @@ class App extends Component {
       <div className="App container">
         <h1>IT team</h1>
         <p>Here are our members</p>
-        <div className="row">
-          <Person
-            name={this.state.persons[0].name}
-            job={this.state.persons[0].job}
-            click={this.switchName.bind(this, "Long")}
-          />
-          <Person
-            name={this.state.persons[1].name}
-            job={this.state.persons[1].job}
-          />
-          <Person
-            name={this.state.persons[2].name}
-            job={this.state.persons[2].job}
-          />
-          <Person name="tai-props" job="photographer">
-            My hobby is to be a photographer! Especially
-          </Person>
-        </div>
+        {
+          this.state.showPersons === true ? (
+            <div className="row">
+              <Person
+                name={this.state.persons[0].name}
+                job={this.state.persons[0].job}
+                click={this.switchName.bind(this, "Long")}
+              />
+              <Person
+                name={this.state.persons[1].name}
+                job={this.state.persons[1].job}
+              />
+              <Person
+                name={this.state.persons[2].name}
+                job={this.state.persons[2].job}
+              />
+              <Person name="tai-props" job="photographer">
+                My hobby is to be a photographer! Especially
+              </Person>
+            </div>
+          ) : null
+          // : co nghia la neu false se tra ve ...
+        }
         {/* style={style} - the 2nd style is the const style created above */}
+        <button style={style} onClick={() => this.togglePersonsHandler()}>
+          Show list names
+        </button>
         <button style={style} onClick={() => this.switchName()}>
           Change name
         </button>
