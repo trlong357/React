@@ -44,6 +44,12 @@ class App extends Component {
   //   console.log(this.state.leaders);
   // };
   render() {
+    const style = {
+      font: "inherit",
+      border: "2px solid blue",
+      padding: "8px",
+      cursor: "pointer",
+    };
     return (
       <div className="App container">
         <h1>IT team</h1>
@@ -66,9 +72,14 @@ class App extends Component {
             My hobby is to be a photographer! Especially
           </Person>
         </div>
-        <button onClick={() => this.switchName()}>Change name</button>
+        {/* style={style} - the 2nd style is the const style created above */}
+        <button style={style} onClick={() => this.switchName()}>
+          Change name
+        </button>
 
-        <button onClick={() => this.switchNameBack()}>Revert name</button>
+        <button style={style} onClick={() => this.switchNameBack()}>
+          Revert name
+        </button>
 
         <h3>Leader's Name: {this.state.leaderName}</h3>
         <p>Type the input below to choose Leader</p>
