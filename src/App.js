@@ -13,7 +13,7 @@ class App extends Component {
     ],
     tempName: "long heo",
     leaderName: "",
-    show: true,
+    show: false,
   };
   switchNameBack = () => {
     this.setState({
@@ -64,32 +64,36 @@ class App extends Component {
       padding: "8px",
       cursor: "pointer",
     };
+
+    let persons = null;
+
+    if (this.state.show) {
+      persons = (
+        <div className="row">
+          <Person
+            name={this.state.persons[0].name}
+            job={this.state.persons[0].job}
+          />
+          <Person
+            name={this.state.persons[1].name}
+            job={this.state.persons[1].job}
+          />
+          <Person
+            name={this.state.persons[2].name}
+            job={this.state.persons[2].job}
+          />
+          <Person
+            name={this.state.persons[3].name}
+            job={this.state.persons[3].job}
+          />
+        </div>
+      );
+    }
     return (
       <div className="App container">
         <h1>IT team</h1>
         <p>Here are our members</p>
-        {this.state.show === true ? (
-          <div className="row">
-            {console.log(this.state.showPersons)}
-            {console.log(undefined == false)}
-            <Person
-              name={this.state.persons[0].name}
-              job={this.state.persons[0].job}
-            />
-            <Person
-              name={this.state.persons[1].name}
-              job={this.state.persons[1].job}
-            />
-            <Person
-              name={this.state.persons[2].name}
-              job={this.state.persons[2].job}
-            />
-            <Person
-              name={this.state.persons[3].name}
-              job={this.state.persons[3].job}
-            />
-          </div>
-        ) : null}
+        {persons}
         {/* ------- */}
         {/* style={style} - the 2nd style is the const style created above */}
         <button style={style} onClick={() => this.togglePersonsHandler()}>
