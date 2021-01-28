@@ -1,0 +1,21 @@
+todo:
+
+1. Exercise: viet functional components <-> class components <<<< (Person viet theo functional component)
+x100
+
+2. coi tai lieu: https://developer.mozilla.org/vi/docs/Web/JavaScript/Data_structures
+(undefined === false) tra ve ket qua false. Chu khong phai true.
+
+3. 
+onClick={this.toggle}:      bien event onClick la function toggle
+onClick={this.toggle()}:    bien event onClick la ket qua cua function toggle
+onClick={() => this.toggle}:bien event onClick la function KHONG TEN, trong function no chay toggle()
+
+4. Bo cai tat xoa code au ta di nhaaaaaa!!!!
+
+5. Component ten viet hoa => class. Viet thuong => functional.
+
+6. Coi tai lieu: https://toidicode.com/classes-trong-es6-340.html
+
+7. Lap thoi khoa bieu
+
