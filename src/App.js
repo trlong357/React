@@ -70,7 +70,10 @@ class App extends Component {
     if (this.state.show) {
       persons = (
         <div className="row">
-          <Person
+          {this.state.persons.map((newPerson) => {
+            return <Person name={newPerson.name} job={newPerson.job} />;
+          })}
+          {/* <Person
             name={this.state.persons[0].name}
             job={this.state.persons[0].job}
           />
@@ -85,7 +88,7 @@ class App extends Component {
           <Person
             name={this.state.persons[3].name}
             job={this.state.persons[3].job}
-          />
+          /> */}
         </div>
       );
     }
