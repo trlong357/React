@@ -10,6 +10,7 @@ class App extends Component {
       { name: "Truc", job: "block-chain developer" },
       { name: "Viet", job: "developer" },
       { name: "Tai", job: "photographer" },
+      { name: "Duc", job: "dancer" },
     ],
     tempName: "long heo",
     leaderName: "",
@@ -58,21 +59,33 @@ class App extends Component {
   //   console.log(this.state.leaders);
   // };
   render() {
+    let newPerson2 = [];
+
+    for (let i = 0; i < this.state.persons.length; i++) {
+      newPerson2.push(
+        <Person
+          name={this.state.persons[i].name}
+          job={this.state.persons[i].job}
+        />
+      );
+    }
+    console.log(newPerson2);
     const style = {
       font: "inherit",
       border: "2px solid blue",
       padding: "8px",
       cursor: "pointer",
     };
-
     let persons = null;
-
     if (this.state.show) {
       persons = (
         <div className="row">
-          {this.state.persons.map((newPerson) => {
+          {/* {this.state.persons.forEach((newPerson) => {
+            // console.log(newPerson);
+            newPerson2.push(newPerson);
             return <Person name={newPerson.name} job={newPerson.job} />;
-          })}
+          })} */}
+          {newPerson2}
           {/* <Person
             name={this.state.persons[0].name}
             job={this.state.persons[0].job}
@@ -97,6 +110,7 @@ class App extends Component {
         <h1>IT team</h1>
         <p>Here are our members</p>
         {persons}
+
         {/* ------- */}
         {/* style={style} - the 2nd style is the const style created above */}
         <button style={style} onClick={() => this.togglePersonsHandler()}>
@@ -108,7 +122,7 @@ class App extends Component {
         <button style={style} onClick={() => this.switchNameBack()}>
           Revert name
         </button>
-        <h3>Leader's Name: {this.state.leaderName}</h3>
+        <h3>Leader's Name: {this.state.tempName}</h3>
         <p>Type the input below to choose Leader</p>
         <input
           type="text"
