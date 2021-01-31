@@ -50,7 +50,11 @@ class App extends Component {
     });
   };
   deleteHandler = (personIndex) => {
-    const personsDel = this.state.persons;
+    // const personsDel = this.state.persons.slice(); ---copy state.persons to personDel
+    // ----
+    // es6
+    const personsDel = [...this.state.persons];
+    // ----
     personsDel.splice(personIndex, 1);
     this.setState({ persons: personsDel });
   };
