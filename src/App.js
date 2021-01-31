@@ -6,11 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 class App extends Component {
   state = {
     persons: [
-      { name: "Long", job: "developer" },
-      { name: "Truc", job: "block-chain developer" },
-      { name: "Viet", job: "developer" },
-      { name: "Tai", job: "photographer" },
-      { name: "Duc", job: "dancer" },
+      { id: "1", name: "Long", job: "developer" },
+      { id: "2", name: "Truc", job: "block-chain developer" },
+      { id: "3", name: "Viet", job: "developer" },
+      { id: "4", name: "Tai", job: "photographer" },
+      { id: "5", name: "Duc", job: "dancer" },
     ],
     tempName: "long heo",
     leaderName: "",
@@ -109,6 +109,10 @@ class App extends Component {
                 name={newPerson.name}
                 job={newPerson.job}
                 styleBackground={styleBox}
+                // ----
+                // key: allow react to keep track of the individual element
+                key={newPerson.id}
+                // ----
               />
             );
           })}
