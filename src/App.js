@@ -15,6 +15,7 @@ class App extends Component {
     tempName: "long heo",
     leaderName: "",
     show: false,
+    color: "orange",
   };
   switchNameBack = () => {
     this.setState({
@@ -41,6 +42,11 @@ class App extends Component {
   changeName = (event) => {
     this.setState({
       tempName: event.target.value,
+    });
+  };
+  changeColor = (event) => {
+    this.setState({
+      color: event.target.value,
     });
   };
   deleteHandler = (personIndex) => {
@@ -80,6 +86,9 @@ class App extends Component {
       padding: "8px",
       cursor: "pointer",
     };
+    const styleBox = {
+      backgroundColor: this.state.color,
+    };
     let persons = null;
     if (this.state.show) {
       persons = (
@@ -95,7 +104,7 @@ class App extends Component {
               <Person
                 name={newPerson.name}
                 job={newPerson.job}
-                clicked={() => this.deleteHandler(index)}
+                styleBackground={styleBox}
               />
             );
           })}
@@ -137,6 +146,12 @@ class App extends Component {
           Revert name
         </button> */}
         {/* ------- */}
+        <h3>Type the input below to change color of boxes</h3>
+        <input
+          type="text"
+          onChange={this.changeColor}
+          value={this.state.color}
+        ></input>
         <h3>Leader's Name: {this.state.tempName}</h3>
         <p>Type the input below to choose Leader</p>
         <input
