@@ -14,7 +14,7 @@ class Person extends Component {
 
   render() {
     let showPerson = (
-      <div>
+      <div onClick={this.props.clicked}>
         <p>
           I'm {this.props.name}, I'm {Math.floor(Math.random() * 100)} years old
           and I am {this.props.job}
@@ -29,7 +29,8 @@ class Person extends Component {
     );
 
     return (
-      <div className="Person col-6" onClick={this.toggle}>
+      // <div className="Person col-6" onClick={this.toggle}>
+      <div className="Person col-6">
         {this.state.show === true ? showPerson : null}
       </div>
     );

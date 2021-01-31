@@ -43,6 +43,11 @@ class App extends Component {
       tempName: event.target.value,
     });
   };
+  deleteHandler = (personIndex) => {
+    const personsDel = this.state.persons;
+    personsDel.splice(personIndex, 1);
+    this.setState({ persons: personsDel });
+  };
 
   personChanged = (event) => {
     this.setState({
@@ -69,7 +74,6 @@ class App extends Component {
         />
       );
     }
-    console.log(newPerson2);
     const style = {
       font: "inherit",
       border: "2px solid blue",
@@ -85,7 +89,16 @@ class App extends Component {
             newPerson2.push(newPerson);
             return <Person name={newPerson.name} job={newPerson.job} />;
           })} */}
-          {newPerson2}
+          {/* {newPerson2} */}
+          {this.state.persons.map((newPerson, index) => {
+            return (
+              <Person
+                name={newPerson.name}
+                job={newPerson.job}
+                clicked={() => this.deleteHandler(index)}
+              />
+            );
+          })}
           {/* <Person
             name={this.state.persons[0].name}
             job={this.state.persons[0].job}
@@ -116,12 +129,14 @@ class App extends Component {
         <button style={style} onClick={() => this.togglePersonsHandler()}>
           Show list names
         </button>
-        <button style={style} onClick={() => this.switchName()}>
+        {/* --------Button change name------ Lesson 40 */}
+        {/* <button style={style} onClick={() => this.switchName()}>
           Change name
         </button>
         <button style={style} onClick={() => this.switchNameBack()}>
           Revert name
-        </button>
+        </button> */}
+        {/* ------- */}
         <h3>Leader's Name: {this.state.tempName}</h3>
         <p>Type the input below to choose Leader</p>
         <input
