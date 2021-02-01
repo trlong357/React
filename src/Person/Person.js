@@ -20,11 +20,11 @@ class Person extends Component {
           and I am {this.props.job}
         </p>
         <p>{this.props.children}</p>
-        {/* <input
+        <input
           type="text"
           onChange={this.props.changed}
           value={this.props.name}
-        ></input> */}
+        ></input>
       </div>
     );
 
@@ -33,7 +33,7 @@ class Person extends Component {
       <div
         className="Person col-6"
         style={this.props.styleBackground}
-        onClick={this.toggle}
+        // onClick={this.toggle}
       >
         {this.state.show === true ? showPerson : null}
       </div>

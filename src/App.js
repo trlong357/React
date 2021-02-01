@@ -39,7 +39,7 @@ class App extends Component {
     });
   };
 
-  changeName = (event) => {
+  changeLeaderName = (event) => {
     this.setState({
       tempName: event.target.value,
     });
@@ -59,9 +59,24 @@ class App extends Component {
     this.setState({ persons: personsDel });
   };
 
-  personChanged = (event) => {
+  personNameChanged = (event, id) => {
+    // findIndex() : find element in arr but then get index of that element
+    const personIndex = this.state.persons.findIndex((p) => {
+      return p.id === id;
+    });
+
+    const nameChange = {
+      ...this.state.persons[personIndex],
+    };
+    nameChange.name = event.target.value;
+    console.log("nameChange: ", nameChange);
+
+    const nameChanges = [...this.state.persons];
+    console.log("nameChanges: ", nameChanges);
+    nameChanges[personIndex] = nameChange;
+    console.log("nameChanges after: ", nameChanges[personIndex]);
     this.setState({
-      tempName: event.target.value,
+      persons: nameChanges,
     });
   };
   togglePersonsHandler = () => {
@@ -113,6 +128,7 @@ class App extends Component {
                 // key: allow react to keep track of the individual element
                 key={newPerson.id}
                 // ----
+                changed={(event) => this.personNameChanged(event, newPerson.id)}
               />
             );
           })}
@@ -164,7 +180,7 @@ class App extends Component {
         <p>Type the input below to choose Leader</p>
         <input
           type="text"
-          onChange={this.changeName}
+          onChange={this.changeLeaderName}
           value={this.state.tempName}
         ></input>
       </div>
