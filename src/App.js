@@ -152,9 +152,20 @@ class App extends Component {
       );
       style.backgroundColor = "red";
     }
+
+    let classes = [];
+    // -----
+    // ---Dynamic CSS
+    if (this.state.show == true) {
+      classes.push("red");
+    }
+    if (this.state.show == false) {
+      classes.push("green");
+    }
+    // ----
     return (
       <div className="App container">
-        <h1>IT team</h1>
+        <h1 className={classes}>IT team</h1>
         <p>Here are our members</p>
         {persons}
 
