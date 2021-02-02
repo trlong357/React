@@ -10,7 +10,6 @@ class App extends Component {
       { id: "2", name: "Truc", job: "block-chain developer" },
       { id: "3", name: "Viet", job: "developer" },
       { id: "4", name: "Tai", job: "photographer" },
-      { id: "5", name: "Duc", job: "dancer" },
     ],
     tempName: "long heo",
     leaderName: "",
@@ -100,6 +99,7 @@ class App extends Component {
       );
     }
     const style = {
+      backgroundColor: "green",
       font: "inherit",
       border: "2px solid blue",
       padding: "8px",
@@ -150,6 +150,7 @@ class App extends Component {
           /> */}
         </div>
       );
+      style.backgroundColor = "red";
     }
     return (
       <div className="App container">
