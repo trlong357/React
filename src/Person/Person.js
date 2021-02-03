@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./Person.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Radium from "radium";
+import styled from "styled-components";
+// https://styled-components.com/docs/basics#installation
 class Person extends Component {
   state = {
     show: true,
@@ -12,13 +13,23 @@ class Person extends Component {
   };
 
   render() {
-    const adjInput = {
-      "@media (max-width: 460px)": {
-        backgroundColor: "red",
-        width: "80%",
-      },
-    };
+    // const adjInput = {
+    // "@media (max-width: 460px)": {
+    //   backgroundColor: "red",
+    //   width: "80%",
+    // },
+    // };
 
+    // -----
+    // luu y code css
+    const InputStyle = styled.input`
+      @media (max-width: 450px) {
+        background-color: red;
+        width: 80%;
+      }
+      border: 2px solid red;
+    `;
+    // ----
     let showPerson = (
       <div>
         <p>
@@ -26,12 +37,11 @@ class Person extends Component {
           and I am {this.props.job}
         </p>
         <p>{this.props.children}</p>
-        <input
-          style={adjInput}
+        <InputStyle
           type="text"
           onChange={this.props.changed}
           value={this.props.name}
-        ></input>
+        ></InputStyle>
       </div>
     );
 
@@ -48,4 +58,4 @@ class Person extends Component {
   }
 }
 
-export default Radium(Person);
+export default Person;

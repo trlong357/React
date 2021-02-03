@@ -28,7 +28,7 @@ class App extends Component {
     });
   };
   switchName = () => {
-    console.log("clicked");
+    // console.log("clicked");
     this.setState({
       persons: [
         { name: "Long Tran", job: "developer" },
@@ -69,12 +69,12 @@ class App extends Component {
       ...this.state.persons[personIndex],
     };
     nameChange.name = event.target.value;
-    console.log("nameChange: ", nameChange);
+    // console.log("nameChange: ", nameChange);
 
     const nameChanges = [...this.state.persons];
-    console.log("nameChanges: ", nameChanges);
+    // console.log("nameChanges: ", nameChanges);
     nameChanges[personIndex] = nameChange;
-    console.log("nameChanges after: ", nameChanges[personIndex]);
+    // console.log("nameChanges after: ", nameChanges[personIndex]);
     this.setState({
       persons: nameChanges,
     });
