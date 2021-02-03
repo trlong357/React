@@ -2,7 +2,7 @@ import "./App.css";
 import Person from "./Person/Person";
 import { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Radium from "radium";
+import Radium, { StyleRoot } from "radium";
 
 class App extends Component {
   state = {
@@ -171,38 +171,40 @@ class App extends Component {
     }
     // ----
     return (
-      <div className="App container">
-        <h1 className={classes}>IT team</h1>
-        <p>Here are our members</p>
-        {persons}
+      <StyleRoot>
+        <div className="App container">
+          <h1 className={classes}>IT team</h1>
+          <p>Here are our members</p>
+          {persons}
 
-        {/* ------- */}
-        {/* style={style} - the 2nd style is the const style created above */}
-        <button style={style} onClick={() => this.togglePersonsHandler()}>
-          Show list names
-        </button>
-        {/* --------Button change name------ Lesson 40 */}
-        {/* <button style={style} onClick={() => this.switchName()}>
+          {/* ------- */}
+          {/* style={style} - the 2nd style is the const style created above */}
+          <button style={style} onClick={() => this.togglePersonsHandler()}>
+            Show list names
+          </button>
+          {/* --------Button change name------ Lesson 40 */}
+          {/* <button style={style} onClick={() => this.switchName()}>
           Change name
         </button>
         <button style={style} onClick={() => this.switchNameBack()}>
           Revert name
         </button> */}
-        {/* ------- */}
-        <h3>Type the input below to change color of boxes</h3>
-        <input
-          type="text"
-          onChange={this.changeColor}
-          value={this.state.color}
-        ></input>
-        <h3>Leader's Name: {this.state.tempName}</h3>
-        <p>Type the input below to choose Leader</p>
-        <input
-          type="text"
-          onChange={this.changeLeaderName}
-          value={this.state.tempName}
-        ></input>
-      </div>
+          {/* ------- */}
+          <h3>Type the input below to change color of boxes</h3>
+          <input
+            type="text"
+            onChange={this.changeColor}
+            value={this.state.color}
+          ></input>
+          <h3>Leader's Name: {this.state.tempName}</h3>
+          <p>Type the input below to choose Leader</p>
+          <input
+            type="text"
+            onChange={this.changeLeaderName}
+            value={this.state.tempName}
+          ></input>
+        </div>
+      </StyleRoot>
     );
   }
 }

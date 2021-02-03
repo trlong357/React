@@ -6,13 +6,19 @@ class Person extends Component {
   state = {
     show: true,
   };
-
   toggle = () => {
     let currentShow = this.state.show;
     this.setState({ show: !currentShow });
   };
 
   render() {
+    const adjInput = {
+      "@media (max-width: 460px)": {
+        backgroundColor: "red",
+        width: "80%",
+      },
+    };
+
     let showPerson = (
       <div>
         <p>
@@ -21,6 +27,7 @@ class Person extends Component {
         </p>
         <p>{this.props.children}</p>
         <input
+          style={adjInput}
           type="text"
           onChange={this.props.changed}
           value={this.props.name}
