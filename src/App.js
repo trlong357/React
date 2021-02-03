@@ -2,6 +2,7 @@ import "./App.css";
 import Person from "./Person/Person";
 import { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Radium from "radium";
 
 class App extends Component {
   state = {
@@ -104,6 +105,9 @@ class App extends Component {
       border: "2px solid blue",
       padding: "8px",
       cursor: "pointer",
+      ":hover": {
+        backgroundColor: "red",
+      },
     };
     const styleBox = {
       backgroundColor: this.state.color,
@@ -151,11 +155,14 @@ class App extends Component {
         </div>
       );
       style.backgroundColor = "red";
+      style[":hover"] = {
+        backgroundColor: "green",
+      };
     }
 
     let classes = [];
     // -----
-    // ---Dynamic CSS
+    // ---Class Names Dynamically
     if (this.state.show == true) {
       classes.push("red");
     }
@@ -200,4 +207,6 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);
+
+// Radium('name') -- called a higher order component

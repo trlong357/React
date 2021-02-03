@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Person.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import Radium from "radium";
 class Person extends Component {
   state = {
     show: true,
@@ -41,4 +41,4 @@ class Person extends Component {
   }
 }
 
-export default Person;
+export default Radium(Person);
