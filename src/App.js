@@ -113,14 +113,14 @@ class App extends Component {
     // };
     let ButtonStyle = styled.button`
       color: white;
-      background-color: green;
+      background-color: ${(props) => (props.alt ? "red" : "green")};
       font: inherit;
       border: 2px solid blue;
       padding: 8px;
       cursor: pointer;
       &:hover {
         color: black;
-        background-color: lightgreen;
+        background-color: ${(props) => (props.alt ? "salmon" : "lightgreen")};
       }
     `;
 
@@ -169,23 +169,13 @@ class App extends Component {
           /> */}
         </div>
       );
+      // ------
       // style.backgroundColor = "red";
       // style[":hover"] = {
       //   color: "black",
       //   backgroundColor: "salmon",
       // };
-      ButtonStyle = styled.button`
-        color: white;
-        background-color: red;
-        font: inherit;
-        border: 2px solid blue;
-        padding: 8px;
-        cursor: pointer;
-        &:hover {
-          color: black;
-          background-color: salmon;
-        }
-      `;
+      // -----
     }
 
     let classes = [];
@@ -210,7 +200,10 @@ class App extends Component {
         {/* <button style={style} onClick={() => this.togglePersonsHandler()}>
           Show list names
         </button> */}
-        <ButtonStyle onClick={() => this.togglePersonsHandler()}>
+        <ButtonStyle
+          alt={this.state.show}
+          onClick={() => this.togglePersonsHandler()}
+        >
           Show list names
         </ButtonStyle>
         {/* ----- */}
