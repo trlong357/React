@@ -1,0 +1,18 @@
+.Person {
+  max-width: 50%;
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  flex: 0 0 50%;
+}
+
+.InputText {
+  background-color: blue;
+}
+
+@media (max-width: 600px) {
+  .InputText {
+    background-color: red;
+    width: 80%;
+  }
+}

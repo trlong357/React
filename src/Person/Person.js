@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./Person.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styled from "styled-components";
+import personClasses from "./Person.module.css";
+// import styled from "styled-components";
 // https://styled-components.com/docs/basics#installation
 import classes from "../CssModules/Styles.module.css";
 
@@ -24,13 +24,13 @@ class Person extends Component {
 
     // -----
     // luu y code css
-    const InputStyle = styled.input`
-      @media (max-width: 450px) {
-        background-color: red;
-        width: 80%;
-      }
-      border: 2px solid red;
-    `;
+    // const InputStyle = styled.input`
+    //   @media (max-width: 450px) {
+    //     background-color: red;
+    //     width: 80%;
+    //   }
+    //   border: 2px solid red;
+    // `;
     // ----
     let showPerson = (
       <div>
@@ -39,18 +39,19 @@ class Person extends Component {
           and I am {this.props.job}
         </p>
         <p>{this.props.children}</p>
-        <InputStyle
+        <input
+          className={personClasses.InputText}
           type="text"
           onChange={this.props.changed}
           value={this.props.name}
-        ></InputStyle>
+        ></input>
       </div>
     );
 
     return (
       // <div className="Person col-6" onClick={this.toggle}>
       <div
-        className="Person col-6"
+        className={personClasses.Person}
         style={this.props.styleBackground}
         // onClick={this.toggle}
       >

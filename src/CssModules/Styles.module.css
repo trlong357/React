@@ -1,8 +1,11 @@
 .myStyle {
   color: blue;
 }
-
-.Button {
+.App {
+  text-align: center;
+  margin: 10px 10%;
+}
+.App button {
   color: white;
   background-color: green;
   font: inherit;
@@ -10,11 +13,11 @@
   padding: 8px;
   cursor: pointer;
 }
-.Button:hover {
+.App button:hover {
   color: black;
   background-color: lightgreen;
 }
-.Button.red {
+.App button.red {
   color: white;
   background-color: red;
   font: inherit;
@@ -22,7 +25,7 @@
   padding: 8px;
   cursor: pointer;
 }
-.Button.red:hover {
+.App button.red:hover {
   color: black;
   background-color: salmon;
 }

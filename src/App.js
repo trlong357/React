@@ -118,7 +118,7 @@ class App extends Component {
     // },
     // };
     // -------------------
-    let btnClass = [classes.Button];
+    let btnClass = "";
     // ----styled Component-----
     // let ButtonStyle = styled.button`
     //   color: white;
@@ -185,7 +185,7 @@ class App extends Component {
       //   backgroundColor: "salmon",
       // };
       // -----
-      btnClass.push(classes.red);
+      btnClass = classes.red;
     }
 
     let classesAssign = [];
@@ -200,7 +200,7 @@ class App extends Component {
     // ----
 
     return (
-      <div className="App container">
+      <div className={classes.App}>
         <h1 className={classesAssign}>IT team</h1>
         <p className={classes.myStyle}>Here are our members</p>
         {persons}
@@ -212,7 +212,7 @@ class App extends Component {
           Show list names
         </button> */}
         <button
-          className={btnClass.join(" ")}
+          className={btnClass}
           onClick={() => this.togglePersonsHandler()}
         >
           Show list names
