@@ -1,0 +1,43 @@
+.myStyle {
+  color: blue;
+}
+
+.Button {
+  color: white;
+  background-color: green;
+  font: inherit;
+  border: 2px solid blue;
+  padding: 8px;
+  cursor: pointer;
+}
+.Button:hover {
+  color: black;
+  background-color: lightgreen;
+}
+.Button.red {
+  color: white;
+  background-color: red;
+  font: inherit;
+  border: 2px solid blue;
+  padding: 8px;
+  cursor: pointer;
+}
+.Button.red:hover {
+  color: black;
+  background-color: salmon;
+}
+
+.bold {
+  font-weight: 400;
+}
+
+.white {
+  color: white;
+}
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}

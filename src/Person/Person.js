@@ -3,6 +3,8 @@ import "./Person.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 // https://styled-components.com/docs/basics#installation
+import classes from "../CssModules/Styles.module.css";
+
 class Person extends Component {
   state = {
     show: true,
@@ -32,7 +34,7 @@ class Person extends Component {
     // ----
     let showPerson = (
       <div>
-        <p>
+        <p className={classes.white}>
           I'm {this.props.name}, I'm {Math.floor(Math.random() * 100)} years old
           and I am {this.props.job}
         </p>

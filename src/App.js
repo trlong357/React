@@ -3,7 +3,9 @@ import Person from "./Person/Person";
 import { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import Radium, { StyleRoot } from "radium";
-import styled from "styled-components";
+// import styled from "styled-components";
+import classes from "./CssModules/Styles.module.css";
+
 class App extends Component {
   state = {
     persons: [
@@ -89,16 +91,20 @@ class App extends Component {
   //   console.log(this.state.leaders);
   // };
   render() {
-    let newPerson2 = [];
+    // ---------
+    // let newPerson2 = [];
 
-    for (let i = 0; i < this.state.persons.length; i++) {
-      newPerson2.push(
-        <Person
-          name={this.state.persons[i].name}
-          job={this.state.persons[i].job}
-        />
-      );
-    }
+    // for (let i = 0; i < this.state.persons.length; i++) {
+    //   newPerson2.push(
+    //     <Person
+    //       name={this.state.persons[i].name}
+    //       job={this.state.persons[i].job}
+    //     />
+    //   );
+    // }
+    // -----------
+
+    // ----------------
     // const style = {
     // color: "white",
     // backgroundColor: "green",
@@ -111,19 +117,22 @@ class App extends Component {
     //   backgroundColor: "lightgreen",
     // },
     // };
-    let ButtonStyle = styled.button`
-      color: white;
-      background-color: ${(props) => (props.alt ? "red" : "green")};
-      font: inherit;
-      border: 2px solid blue;
-      padding: 8px;
-      cursor: pointer;
-      &:hover {
-        color: black;
-        background-color: ${(props) => (props.alt ? "salmon" : "lightgreen")};
-      }
-    `;
-
+    // -------------------
+    let btnClass = [classes.Button];
+    // ----styled Component-----
+    // let ButtonStyle = styled.button`
+    //   color: white;
+    //   background-color: ${(props) => (props.alt ? "red" : "green")};
+    //   font: inherit;
+    //   border: 2px solid blue;
+    //   padding: 8px;
+    //   cursor: pointer;
+    //   &:hover {
+    //     color: black;
+    //     background-color: ${(props) => (props.alt ? "salmon" : "lightgreen")};
+    //   }
+    // `;
+    // ----------------------------------
     const styleBox = {
       backgroundColor: this.state.color,
     };
@@ -176,22 +185,24 @@ class App extends Component {
       //   backgroundColor: "salmon",
       // };
       // -----
+      btnClass.push(classes.red);
     }
 
-    let classes = [];
+    let classesAssign = [];
     // -----
     // ---Class Names Dynamically
-    if (this.state.show == true) {
-      classes.push("red");
+    if (this.state.show === true) {
+      classesAssign.push(classes.red);
     }
-    if (this.state.show == false) {
-      classes.push("green");
+    if (this.state.show === false) {
+      classesAssign.push(classes.green);
     }
     // ----
+
     return (
       <div className="App container">
-        <h1 className={classes}>IT team</h1>
-        <p>Here are our members</p>
+        <h1 className={classesAssign}>IT team</h1>
+        <p className={classes.myStyle}>Here are our members</p>
         {persons}
 
         {/* ------- */}
@@ -200,12 +211,12 @@ class App extends Component {
         {/* <button style={style} onClick={() => this.togglePersonsHandler()}>
           Show list names
         </button> */}
-        <ButtonStyle
-          alt={this.state.show}
+        <button
+          className={btnClass.join(" ")}
           onClick={() => this.togglePersonsHandler()}
         >
           Show list names
-        </ButtonStyle>
+        </button>
         {/* ----- */}
         {/* --------Button change name------ Lesson 40 */}
         {/* <button style={style} onClick={() => this.switchName()}>
