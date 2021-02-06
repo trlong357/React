@@ -47,7 +47,13 @@ class Person extends Component {
         ></input>
       </div>
     );
-
+    // -----Errror-------
+    const rnd = Math.random();
+    if (rnd > 0.7) {
+      throw new Error("sthing went wrong");
+    }
+    console.log(rnd);
+    // ----------------------
     return (
       // <div className="Person col-6" onClick={this.toggle}>
       <div

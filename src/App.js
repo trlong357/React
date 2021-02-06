@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import Radium, { StyleRoot } from "radium";
 // import styled from "styled-components";
 import classes from "./CssModules/Styles.module.css";
+import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
 class App extends Component {
   state = {
@@ -70,13 +71,12 @@ class App extends Component {
     const nameChange = {
       ...this.state.persons[personIndex],
     };
+
     nameChange.name = event.target.value;
-    // console.log("nameChange: ", nameChange);
 
     const nameChanges = [...this.state.persons];
-    // console.log("nameChanges: ", nameChanges);
+
     nameChanges[personIndex] = nameChange;
-    // console.log("nameChanges after: ", nameChanges[personIndex]);
     this.setState({
       persons: nameChanges,
     });
@@ -148,16 +148,20 @@ class App extends Component {
           {/* {newPerson2} */}
           {this.state.persons.map((newPerson, index) => {
             return (
-              <Person
-                name={newPerson.name}
-                job={newPerson.job}
-                styleBackground={styleBox}
-                // ----
-                // key: allow react to keep track of the individual element
-                key={newPerson.id}
-                // ----
-                changed={(event) => this.personNameChanged(event, newPerson.id)}
-              />
+              <ErrorBoundary key={newPerson.id}>
+                <Person
+                  name={newPerson.name}
+                  job={newPerson.job}
+                  styleBackground={styleBox}
+                  // ----
+                  // key: allow react to keep track of the individual element
+                  // key={newPerson.id}
+                  // ----
+                  changed={(event) =>
+                    this.personNameChanged(event, newPerson.id)
+                  }
+                />
+              </ErrorBoundary>
             );
           })}
           {/* <Person
