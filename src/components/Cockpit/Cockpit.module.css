@@ -1,0 +1,46 @@
+.myStyle {
+  color: blue;
+}
+.Cockpit {
+  text-align: center;
+  margin: 10px 10%;
+}
+.Cockpit button {
+  color: white;
+  background-color: green;
+  font: inherit;
+  border: 2px solid blue;
+  padding: 8px;
+  cursor: pointer;
+}
+.Cockpit button:hover {
+  color: black;
+  background-color: lightgreen;
+}
+.Cockpit button.red {
+  color: white;
+  background-color: red;
+  font: inherit;
+  border: 2px solid blue;
+  padding: 8px;
+  cursor: pointer;
+}
+.Cockpit button.red:hover {
+  color: black;
+  background-color: salmon;
+}
+
+.bold {
+  font-weight: 400;
+}
+
+.white {
+  color: white;
+}
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}

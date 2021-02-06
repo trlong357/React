@@ -1,11 +1,14 @@
 import "./App.css";
-import Person from "../components/Persons/Person/Person";
+import Persons from "../components/Persons/Persons";
+// import Person from "../components/Persons/Person/Person";
 import { Component } from "react";
 import "/home/tony/React/react-guide/node_modules/bootstrap/dist/css/bootstrap.min.css";
 // import Radium, { StyleRoot } from "radium";
 // import styled from "styled-components";
 import classes from "../CssModules/Styles.module.css";
-import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+// import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import Cockpit from "../components/Cockpit/Cockpit";
+import LeaderName from "../components/LeaderName/LeaderName";
 
 class App extends Component {
   state = {
@@ -16,7 +19,6 @@ class App extends Component {
       { id: "4", name: "Tai", job: "photographer" },
     ],
     tempName: "long heo",
-    leaderName: "",
     show: false,
     color: "orange",
   };
@@ -146,24 +148,25 @@ class App extends Component {
             return <Person name={newPerson.name} job={newPerson.job} />;
           })} */}
           {/* {newPerson2} */}
-          {this.state.persons.map((newPerson, index) => {
+          <Persons
+            persons={this.state.persons}
+            styleBackground={styleBox}
+            changed={(event) => this.personNameChanged(event, persons.id)}
+          />
+          {/* {this.state.persons.map((newPerson, index) => {
             return (
-              <ErrorBoundary key={newPerson.id}>
-                <Person
-                  name={newPerson.name}
-                  job={newPerson.job}
-                  styleBackground={styleBox}
-                  // ----
-                  // key: allow react to keep track of the individual element
-                  // key={newPerson.id}
-                  // ----
-                  changed={(event) =>
-                    this.personNameChanged(event, newPerson.id)
-                  }
-                />
-              </ErrorBoundary>
+              <Person
+                name={newPerson.name}
+                job={newPerson.job}
+                styleBackground={styleBox}
+                // ----
+                // key: allow react to keep track of the individual element
+                key={newPerson.id}
+                // ----
+                changed={(event) => this.personNameChanged(event, newPerson.id)}
+              />
             );
-          })}
+          })} */}
           {/* <Person
             name={this.state.persons[0].name}
             job={this.state.persons[0].job}
@@ -205,8 +208,14 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-        <h1 className={classesAssign}>IT team</h1>
-        <p className={classes.myStyle}>Here are our members</p>
+        {/* <h1 className={classesAssign}>IT team</h1>
+        <p className={classes.myStyle}>Here are our members</p> */}
+        <Cockpit
+          nameClass={classesAssign}
+          buttonClass={btnClass}
+          show={this.state.show}
+          clicked={() => this.togglePersonsHandler()}
+        />
         {persons}
 
         {/* ------- */}
@@ -215,12 +224,12 @@ class App extends Component {
         {/* <button style={style} onClick={() => this.togglePersonsHandler()}>
           Show list names
         </button> */}
-        <button
+        {/* <button
           className={btnClass}
           onClick={() => this.togglePersonsHandler()}
         >
           Show list names
-        </button>
+        </button> */}
         {/* ----- */}
         {/* --------Button change name------ Lesson 40 */}
         {/* <button style={style} onClick={() => this.switchName()}>
@@ -236,13 +245,14 @@ class App extends Component {
           onChange={this.changeColor}
           value={this.state.color}
         ></input>
-        <h3>Leader's Name: {this.state.tempName}</h3>
+        {/* <h3>Leader's Name: {this.state.tempName}</h3>
         <p>Type the input below to choose Leader</p>
         <input
           type="text"
           onChange={this.changeLeaderName}
           value={this.state.tempName}
-        ></input>
+        ></input> */}
+        <LeaderName />
       </div>
     );
   }

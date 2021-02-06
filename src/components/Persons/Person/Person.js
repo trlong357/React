@@ -57,6 +57,7 @@ class Person extends Component {
     return (
       // <div className="Person col-6" onClick={this.toggle}>
       <div
+        onClick={this.toggle}
         className={personClasses.Person}
         style={this.props.styleBackground}
         // onClick={this.toggle}
