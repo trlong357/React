@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import personClasses from "./Person.module.css";
 // import styled from "styled-components";
 // https://styled-components.com/docs/basics#installation
-import classes from "../CssModules/Styles.module.css";
+import classes from "/home/tony/React/react-guide/src/CssModules/Styles.module.css";
 
 class Person extends Component {
   state = {
@@ -48,11 +48,11 @@ class Person extends Component {
       </div>
     );
     // -----Errror-------
-    const rnd = Math.random();
-    if (rnd > 0.7) {
-      throw new Error("sthing went wrong");
-    }
-    console.log(rnd);
+    // const rnd = Math.random();
+    // if (rnd > 0.7) {
+    //   throw new Error("sthing went wrong");
+    // }
+    // console.log(rnd);
     // ----------------------
     return (
       // <div className="Person col-6" onClick={this.toggle}>

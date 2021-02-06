@@ -1,11 +1,11 @@
 import "./App.css";
-import Person from "./Person/Person";
+import Person from "../components/Persons/Person/Person";
 import { Component } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "/home/tony/React/react-guide/node_modules/bootstrap/dist/css/bootstrap.min.css";
 // import Radium, { StyleRoot } from "radium";
 // import styled from "styled-components";
-import classes from "./CssModules/Styles.module.css";
-import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
+import classes from "../CssModules/Styles.module.css";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 
 class App extends Component {
   state = {
