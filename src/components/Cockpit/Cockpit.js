@@ -12,7 +12,7 @@ const cockpit = (props) => {
   }
   return (
     <div>
-      <h1 className={classesAssign}>IT team</h1>
+      <h1 className={classesAssign}>{props.title}</h1>
       <p className={classes.myStyle}>Here are our members</p>
       <button className={props.buttonClass} onClick={props.clicked}>
         Show list names

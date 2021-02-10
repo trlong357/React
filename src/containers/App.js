@@ -11,6 +11,21 @@ import Cockpit from "../components/Cockpit/Cockpit";
 import LeaderName from "../components/LeaderName/LeaderName";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log("[App.js] constructor");
+    // this.state = {
+    //   persons: [
+    //     { id: "1", name: "Long", job: "developer" },
+    //     { id: "2", name: "Truc", job: "block-chain developer" },
+    //     { id: "3", name: "Viet", job: "developer" },
+    //     { id: "4", name: "Tai", job: "photographer" },
+    //   ],
+    //   tempName: "long heo",
+    //   show: false,
+    //   color: "orange",
+    // }; -----Old syntax to set state
+  }
   state = {
     persons: [
       { id: "1", name: "Long", job: "developer" },
@@ -22,6 +37,18 @@ class App extends Component {
     show: false,
     color: "orange",
   };
+
+  static getDerivedStateFromProps(props, state) {
+    console.log("[App.js] getDerivedStateFromProps", props);
+    return state;
+  }
+  // componentWillMount() {
+  //   console.log("[App.js] componentWillMount");
+  // }
+  componentDidMount() {
+    console.log("[App.js] componentDidMount");
+  }
+
   switchNameBack = () => {
     this.setState({
       persons: [
@@ -44,11 +71,6 @@ class App extends Component {
     });
   };
 
-  changeLeaderName = (event) => {
-    this.setState({
-      tempName: event.target.value,
-    });
-  };
   changeColor = (event) => {
     this.setState({
       color: event.target.value,
@@ -83,6 +105,7 @@ class App extends Component {
       persons: nameChanges,
     });
   };
+
   togglePersonsHandler = () => {
     let currentShow = this.state.show;
     this.setState({ show: !currentShow });
@@ -93,6 +116,7 @@ class App extends Component {
   //   console.log(this.state.leaders);
   // };
   render() {
+    console.log("[App.js] render");
     // ---------
     // let newPerson2 = [];
 
@@ -151,7 +175,7 @@ class App extends Component {
           <Persons
             persons={this.state.persons}
             styleBackground={styleBox}
-            changed={(event) => this.personNameChanged(event, persons.id)}
+            changed={this.personNameChanged}
           />
           {/* {this.state.persons.map((newPerson, index) => {
             return (
@@ -194,7 +218,6 @@ class App extends Component {
       // -----
       btnClass = classes.red;
     }
-
     let classesAssign = [];
     // -----
     // ---Class Names Dynamically
@@ -211,6 +234,7 @@ class App extends Component {
         {/* <h1 className={classesAssign}>IT team</h1>
         <p className={classes.myStyle}>Here are our members</p> */}
         <Cockpit
+          title={this.props.appTitle}
           nameClass={classesAssign}
           buttonClass={btnClass}
           show={this.state.show}
