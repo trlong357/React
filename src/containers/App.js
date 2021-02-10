@@ -49,6 +49,14 @@ class App extends Component {
     console.log("[App.js] componentDidMount");
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("[App.js] shouldComponentUpdate");
+    // return fasle;
+    // if return false: preventing the update
+    return true;
+  }
+
+  // ----------Function------------
   switchNameBack = () => {
     this.setState({
       persons: [
