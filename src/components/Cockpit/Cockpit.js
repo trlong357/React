@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+// useEffect combines the functionality or the use cases you can
+// cover of all these class-based lifcycle hooks
 import classes from "./Cockpit.module.css";
 
-const cockpit = (props) => {
+const Cockpit = (props) => {
+  useEffect(() => {
+    console.log("[Cockpit.js] useEffect");
+    // can send HTTP requets or ...
+  });
+
   const classesAssign = [];
 
   if (props.show === true) {
@@ -21,4 +28,4 @@ const cockpit = (props) => {
   );
 };
 
-export default cockpit;
+export default Cockpit;
