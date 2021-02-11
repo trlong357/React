@@ -14,10 +14,21 @@ const Cockpit = (props) => {
       setTimeout(() => {
         alert("learn learn learn!");
       }, 1000);
+
+      return () => {
+        console.log("Cockpit.js] cleanup work in useEffect");
+      };
     },
-    // [] // --> this alert one first time
-    [props.show] //--> alert when u drop-down toggle
+    [] // --> this alert one first time
+    //[props.show] //--> alert when u click button toggle
   );
+
+  useEffect(() => {
+    console.log("[Cockpit.js] 2nd useEffect");
+    return () => {
+      console.log("Cockpit.js] cleanup work in 2nd useEffect");
+    };
+  });
 
   const classesAssign = [];
 

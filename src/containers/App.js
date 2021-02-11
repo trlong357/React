@@ -36,6 +36,7 @@ class App extends Component {
     tempName: "long heo",
     show: false,
     color: "orange",
+    showCockpit: true,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -241,13 +242,22 @@ class App extends Component {
       <div className={classes.App}>
         {/* <h1 className={classesAssign}>IT team</h1>
         <p className={classes.myStyle}>Here are our members</p> */}
-        <Cockpit
-          title={this.props.appTitle}
-          nameClass={classesAssign}
-          buttonClass={btnClass}
-          show={this.state.show}
-          clicked={() => this.togglePersonsHandler()}
-        />
+        {this.state.showCockpit ? (
+          <Cockpit
+            title={this.props.appTitle}
+            nameClass={classesAssign}
+            buttonClass={btnClass}
+            show={this.state.show}
+            clicked={() => this.togglePersonsHandler()}
+          />
+        ) : null}
+        <button
+          onClick={() => {
+            this.setState({ showCockpit: false });
+          }}
+        >
+          Remove Cockpit
+        </button>
         {persons}
 
         {/* ------- */}
