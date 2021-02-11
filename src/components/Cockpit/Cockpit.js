@@ -11,15 +11,16 @@ const Cockpit = (props) => {
     () => {
       console.log("[Cockpit.js] useEffect");
       // can send HTTP requets or ...
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         alert("learn learn learn!");
       }, 1000);
 
       return () => {
+        clearTimeout(timer);
         console.log("Cockpit.js] cleanup work in useEffect");
       };
-    },
-    [] // --> this alert one first time
+    }
+    //[] // --> this alert one first time
     //[props.show] //--> alert when u click button toggle
   );
 
