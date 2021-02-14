@@ -227,15 +227,15 @@ class App extends Component {
       // -----
       btnClass = classes.red;
     }
-    let classesAssign = [];
+    // let classesAssign = [];
     // -----
     // ---Class Names Dynamically
-    if (this.state.show === true) {
-      classesAssign.push(classes.red);
-    }
-    if (this.state.show === false) {
-      classesAssign.push(classes.green);
-    }
+    // if (this.state.show === true) {
+    //   classesAssign.push(classes.red);
+    // }
+    // if (this.state.show === false) {
+    //   classesAssign.push(classes.green);
+    // }
     // ----
 
     return (
@@ -245,7 +245,7 @@ class App extends Component {
         {this.state.showCockpit ? (
           <Cockpit
             title={this.props.appTitle}
-            nameClass={classesAssign}
+            // nameClass={classesAssign}
             buttonClass={btnClass}
             show={this.state.show}
             clicked={() => this.togglePersonsHandler()}

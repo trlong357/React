@@ -12,7 +12,7 @@ const Cockpit = (props) => {
       console.log("[Cockpit.js] useEffect");
       // can send HTTP requets or ...
       const timer = setTimeout(() => {
-        alert("learn learn learn!");
+        // alert("learn learn learn!");
       }, 1000);
 
       return () => {
@@ -34,10 +34,10 @@ const Cockpit = (props) => {
   const classesAssign = [];
 
   if (props.show === true) {
-    classesAssign.push(classes.red);
+    classesAssign.push("red");
   }
   if (props.show === false) {
-    classesAssign.push(classes.green);
+    classesAssign.push("green");
   }
   return (
     <div>
@@ -50,4 +50,4 @@ const Cockpit = (props) => {
   );
 };
 
-export default Cockpit;
+export default React.memo(Cockpit);
