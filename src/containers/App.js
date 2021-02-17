@@ -248,7 +248,7 @@ class App extends Component {
             // nameClass={classesAssign}
             buttonClass={btnClass}
             show={this.state.show}
-            clicked={() => this.togglePersonsHandler()}
+            clicked={this.togglePersonsHandler}
           />
         ) : null}
         <button
