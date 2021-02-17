@@ -56,6 +56,7 @@ class Person extends Component {
     // console.log(rnd);
     // ----------------------
     return (
+      // [
       // <div className="Person col-6" onClick={this.toggle}>
       <div
         // onClick={this.toggle}
@@ -63,8 +64,9 @@ class Person extends Component {
         style={this.props.styleBackground}
         // onClick={this.toggle}
       >
-        {this.state.show === true ? showPerson : null}
+        {this.state.show === true ? showPerson : null}{" "}
       </div>
+      // ]
     );
   }
 }

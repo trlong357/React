@@ -183,7 +183,7 @@ class App extends Component {
           {/* {newPerson2} */}
           <Persons
             persons={this.state.persons}
-            // styleBackground={styleBox}
+            styleBackground={styleBox}
             changed={this.personNameChanged}
           />
           {/* {this.state.persons.map((newPerson, index) => {

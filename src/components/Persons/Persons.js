@@ -1,7 +1,7 @@
 import React from "react";
 import { PureComponent } from "react";
 import Person from "./Person/Person";
-
+import Aux from "/home/tony/React/react-guide/src/hoc/Aux";
 class Persons extends PureComponent {
   // static getDerivedStateFromProps(props, state) {
   //   console.log("[Persons.js] getDerivedStateFromProps");
@@ -42,13 +42,15 @@ class Persons extends PureComponent {
     console.log("[Persons.js] rendering...");
     return this.props.persons.map((person) => {
       return (
-        <Person
-          name={person.name}
-          job={person.job}
-          // styleBackground={this.props.styleBackground}
-          key={person.id}
-          changed={(event) => this.props.changed(event, person.id)}
-        />
+        <Aux>
+          <Person
+            name={person.name}
+            job={person.job}
+            styleBackground={this.props.styleBackground}
+            key={person.id}
+            changed={(event) => this.props.changed(event, person.id)}
+          />
+        </Aux>
       );
     });
   }
