@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import personClasses from "./Person.module.css";
 // import styled from "styled-components";
@@ -34,7 +34,7 @@ class Person extends Component {
     // `;
     // ----
     let showPerson = (
-      <div>
+      <Fragment>
         <p className={classes.white}>
           I'm {this.props.name}, I'm {Math.floor(Math.random() * 100)} years old
           and I am {this.props.job}
@@ -46,7 +46,7 @@ class Person extends Component {
           onChange={this.props.changed}
           value={this.props.name}
         ></input>
-      </div>
+      </Fragment>
     );
     // -----Errror-------
     // const rnd = Math.random();
@@ -56,7 +56,6 @@ class Person extends Component {
     // console.log(rnd);
     // ----------------------
     return (
-      // [
       // <div className="Person col-6" onClick={this.toggle}>
       <div
         // onClick={this.toggle}
@@ -66,7 +65,6 @@ class Person extends Component {
       >
         {this.state.show === true ? showPerson : null}{" "}
       </div>
-      // ]
     );
   }
 }
