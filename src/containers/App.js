@@ -9,8 +9,8 @@ import classes from "../CssModules/Styles.module.css";
 // import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import Cockpit from "../components/Cockpit/Cockpit";
 import LeaderName from "../components/LeaderName/LeaderName";
-import WithClass from "/home/tony/React/react-guide/src/hoc/WithClass.js";
-
+import withClass from "../hoc/withClass.js";
+import Aux from "../hoc/Aux";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -240,7 +240,7 @@ class App extends Component {
     // ----
 
     return (
-      <WithClass classes={classes.App}>
+      <Aux>
         {/* <h1 className={classesAssign}>IT team</h1>
         <p className={classes.myStyle}>Here are our members</p> */}
         {this.state.showCockpit ? (
@@ -296,11 +296,11 @@ class App extends Component {
           value={this.state.tempName}
         ></input> */}
         <LeaderName />
-      </WithClass>
+      </Aux>
     );
   }
 }
 
-export default App;
-
+export default withClass(App, classes.App);
+// export default App;
 // Radium('name') -- called a higher order component
