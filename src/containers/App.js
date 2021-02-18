@@ -38,6 +38,7 @@ class App extends Component {
     show: false,
     color: "orange",
     showCockpit: true,
+    changeCounter: 0,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -111,8 +112,11 @@ class App extends Component {
     const nameChanges = [...this.state.persons];
 
     nameChanges[personIndex] = nameChange;
-    this.setState({
-      persons: nameChanges,
+    this.setState((prevState, props) => {
+      return {
+        persons: nameChanges,
+        changeCounter: this.state.changeCounter + 1,
+      };
     });
   };
 
