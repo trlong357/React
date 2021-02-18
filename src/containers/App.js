@@ -9,6 +9,7 @@ import classes from "../CssModules/Styles.module.css";
 // import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import Cockpit from "../components/Cockpit/Cockpit";
 import LeaderName from "../components/LeaderName/LeaderName";
+import WithClass from "/home/tony/React/react-guide/src/hoc/WithClass.js";
 
 class App extends Component {
   constructor(props) {
@@ -239,7 +240,7 @@ class App extends Component {
     // ----
 
     return (
-      <div className={classes.App}>
+      <WithClass classes={classes.App}>
         {/* <h1 className={classesAssign}>IT team</h1>
         <p className={classes.myStyle}>Here are our members</p> */}
         {this.state.showCockpit ? (
@@ -295,7 +296,7 @@ class App extends Component {
           value={this.state.tempName}
         ></input> */}
         <LeaderName />
-      </div>
+      </WithClass>
     );
   }
 }

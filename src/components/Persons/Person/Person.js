@@ -1,6 +1,7 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import personClasses from "./Person.module.css";
+import Aux from "/home/tony/React/react-guide/src/hoc/Aux";
 // import styled from "styled-components";
 // https://styled-components.com/docs/basics#installation
 import classes from "/home/tony/React/react-guide/src/CssModules/Styles.module.css";
@@ -34,7 +35,7 @@ class Person extends Component {
     // `;
     // ----
     let showPerson = (
-      <Fragment>
+      <Aux>
         <p className={classes.white}>
           I'm {this.props.name}, I'm {Math.floor(Math.random() * 100)} years old
           and I am {this.props.job}
@@ -46,7 +47,7 @@ class Person extends Component {
           onChange={this.props.changed}
           value={this.props.name}
         ></input>
-      </Fragment>
+      </Aux>
     );
     // -----Errror-------
     // const rnd = Math.random();
