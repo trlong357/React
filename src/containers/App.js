@@ -2,7 +2,7 @@ import "./App.css";
 import Persons from "../components/Persons/Persons";
 // import Person from "../components/Persons/Person/Person";
 import { Component } from "react";
-import "/home/tony/React/react-guide/node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 // import Radium, { StyleRoot } from "radium";
 // import styled from "styled-components";
 import classes from "../CssModules/Styles.module.css";

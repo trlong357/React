@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import personClasses from "./Person.module.css";
-import Aux from "/home/tony/React/react-guide/src/hoc/Aux";
+import Aux from "/home/tony/React/src/hoc/Aux.js";
+import PropTypes from 'prop-types'
+
+
 // import styled from "styled-components";
 // https://styled-components.com/docs/basics#installation
-import classes from "/home/tony/React/react-guide/src/CssModules/Styles.module.css";
+import classes from "/home/tony/React/src/components/Persons/Person/Person.module.css";
 
 class Person extends Component {
   state = {
@@ -70,4 +73,9 @@ class Person extends Component {
   }
 }
 
+Person.propTypes = {
+  name: PropTypes.string,
+  job: PropTypes.string,
+  changed: PropTypes.func,
+};
 export default Person;
