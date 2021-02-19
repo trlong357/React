@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 // useEffect combines the functionality or the use cases you can
 // cover of all these class-based lifcycle hooks
 
@@ -7,20 +7,26 @@ import React, { useEffect } from "react";
 import classes from "./Cockpit.module.css";
 
 const Cockpit = (props) => {
+  const toggleBtnRef = useRef(null);
+
   useEffect(
     () => {
       console.log("[Cockpit.js] useEffect");
       // can send HTTP requets or ...
-      const timer = setTimeout(() => {
-        // alert("learn learn learn!");
-      }, 1000);
+      // const timer = setTimeout(() => {
+      //   // alert("learn learn learn!");
+      // }, 1000);
 
+      // -----------
+      toggleBtnRef.current.click()
+      // useEffect doesn't run immediately -> can pass toggleBtnRef
+      // -----------
       return () => {
-        clearTimeout(timer);
+        // clearTimeout(timer);
         console.log("Cockpit.js] cleanup work in useEffect");
       };
-    }
-    //[] // --> this alert one first time
+    },
+    [] // --> this alert one first time
     //[props.show] //--> alert when u click button toggle
   );
 
@@ -43,7 +49,7 @@ const Cockpit = (props) => {
     <div>
       <h1 className={classesAssign}>{props.title}</h1>
       <p className={classes.myStyle}>Here are our members</p>
-      <button className={props.buttonClass} onClick={props.clicked}>
+      <button ref ={toggleBtnRef} className={props.buttonClass} onClick={props.clicked}>
         Show list names
       </button>
     </div>
