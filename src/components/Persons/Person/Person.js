@@ -10,9 +10,20 @@ import PropTypes from 'prop-types'
 import classes from "/home/tony/React/src/components/Persons/Person/Person.module.css";
 
 class Person extends Component {
+  constructor(props){
+    super(props);
+    this.inputElementRef = React.createRef();
+  }
+
   state = {
     show: true,
   };
+
+  componentDidMount() {
+    // this.inputElement.focus();
+    this.inputElementRef.current.focus();
+  }
+
   toggle = () => {
     let currentShow = this.state.show;
     this.setState({ show: !currentShow });
@@ -45,6 +56,8 @@ class Person extends Component {
         </p>
         <p>{this.props.children}</p>
         <input
+          // ref = {(inputEl) => {this.inputElement = inputEl}}
+          ref = {this.inputElementRef}
           className={personClasses.InputText}
           type="text"
           onChange={this.props.changed}
