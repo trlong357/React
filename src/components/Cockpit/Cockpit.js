@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 // useEffect combines the functionality or the use cases you can
 // cover of all these class-based lifcycle hooks
 
@@ -8,7 +8,8 @@ import classes from "./Cockpit.module.css";
 import AuthContext from "../../context/auth-context";
 const Cockpit = (props) => {
   const toggleBtnRef = useRef(null);
-
+  const authContext = useContext(AuthContext);
+  console.log("Cockpit Context Auth: ", authContext.authenticated);
   useEffect(
     () => {
       console.log("[Cockpit.js] useEffect");

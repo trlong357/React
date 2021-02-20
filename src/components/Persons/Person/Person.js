@@ -15,6 +15,8 @@ class Person extends Component {
     // React.createRef is a method offerd on the React obj we're importing
   }
 
+  static contextType = AuthContext; //not available in function components
+
   state = {
     show: true,
   };
@@ -22,6 +24,7 @@ class Person extends Component {
   componentDidMount() {
     // this.inputElement.focus();
     this.inputElementRef.current.focus();
+    console.log("Person Context Auth: ", this.context.authenticated);
   }
 
   toggle = () => {
@@ -50,11 +53,11 @@ class Person extends Component {
     // ----
     let showPerson = (
       <Aux>
-        <AuthContext.Consumer>
-          {(context) =>
-            context.authenticated ? <p>Authenticated!</p> : <p>Please log in</p>
-          }
-        </AuthContext.Consumer>
+        {this.context.authenticated ? (
+          <p>Authenticated!</p>
+        ) : (
+          <p>Please log in</p>
+        )}
         <p className={classes.white}>
           I'm {this.props.name}, I'm {Math.floor(Math.random() * 100)} years old
           and I am {this.props.job}
