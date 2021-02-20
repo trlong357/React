@@ -11,6 +11,8 @@ import Cockpit from "../components/Cockpit/Cockpit";
 import LeaderName from "../components/LeaderName/LeaderName";
 import withClass from "../hoc/withClass.js";
 import Aux from "../hoc/Aux";
+import AuthContext from "../context/auth-context";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +41,7 @@ class App extends Component {
     color: "orange",
     showCockpit: true,
     changeCounter: 0,
-    auth: false
+    auth: false,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -131,8 +133,8 @@ class App extends Component {
   //   console.log(this.state.leaders);
   // };
 
-  loginHandler = () =>{
-    this.setState({auth: true});
+  loginHandler = () => {
+    this.setState({ auth: true });
   };
   render() {
     console.log("[App.js] render");
@@ -195,7 +197,7 @@ class App extends Component {
             persons={this.state.persons}
             styleBackground={styleBox}
             changed={this.personNameChanged}
-            isAuthenticated = {this.state.auth}
+            isAuthenticated={this.state.auth}
           />
           {/* {this.state.persons.map((newPerson, index) => {
             return (
@@ -253,16 +255,6 @@ class App extends Component {
       <Aux>
         {/* <h1 className={classesAssign}>IT team</h1>
         <p className={classes.myStyle}>Here are our members</p> */}
-        {this.state.showCockpit ? (
-          <Cockpit
-            title={this.props.appTitle}
-            // nameClass={classesAssign}
-            buttonClass={btnClass}
-            show={this.state.show}
-            clicked={this.togglePersonsHandler}
-            login = {this.loginHandler}
-          />
-        ) : null}
         <button
           onClick={() => {
             this.setState({ showCockpit: false });
@@ -270,8 +262,24 @@ class App extends Component {
         >
           Remove Cockpit
         </button>
-        {persons}
-
+        <AuthContext.Provider
+          value={{
+            authenticated: this.state.auth,
+            login: this.loginHandler,
+          }}
+        >
+          {this.state.showCockpit ? (
+            <Cockpit
+              title={this.props.appTitle}
+              // nameClass={classesAssign}
+              buttonClass={btnClass}
+              show={this.state.show}
+              clicked={this.togglePersonsHandler}
+              // login={this.loginHandler}
+            />
+          ) : null}
+          {persons}
+        </AuthContext.Provider>
         {/* ------- */}
         {/* style={style} - the 2nd style is the const style created above */}
         {/* ----- */}

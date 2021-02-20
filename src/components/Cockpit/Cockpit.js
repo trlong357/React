@@ -5,7 +5,7 @@ import React, { useEffect, useRef } from "react";
 // Effects Hooks are equivalent to componentDidMount(),
 // componentDidUpdate(), and componentWillUnmount() lifecycle methods.
 import classes from "./Cockpit.module.css";
-
+import AuthContext from "../../context/auth-context";
 const Cockpit = (props) => {
   const toggleBtnRef = useRef(null);
 
@@ -18,7 +18,7 @@ const Cockpit = (props) => {
       // }, 1000);
 
       // -----------
-      toggleBtnRef.current.click()
+      toggleBtnRef.current.click();
       // useEffect doesn't run immediately -> can pass toggleBtnRef
       // -----------
       return () => {
@@ -49,10 +49,16 @@ const Cockpit = (props) => {
     <div>
       <h1 className={classesAssign}>{props.title}</h1>
       <p className={classes.myStyle}>Here are our members</p>
-      <button ref ={toggleBtnRef} className={props.buttonClass} onClick={props.clicked}>
+      <button
+        ref={toggleBtnRef}
+        className={props.buttonClass}
+        onClick={props.clicked}
+      >
         Show list names
       </button>
-      <button onClick={props.login}>Log In</button>
+      <AuthContext.Consumer>
+        {(context) => <button onClick={context.login}>Log In</button>}
+      </AuthContext.Consumer>
     </div>
   );
 };
