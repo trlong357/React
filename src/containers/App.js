@@ -39,6 +39,7 @@ class App extends Component {
     color: "orange",
     showCockpit: true,
     changeCounter: 0,
+    auth: false
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -129,6 +130,10 @@ class App extends Component {
   //   this.setState({ leaders: "Long" });
   //   console.log(this.state.leaders);
   // };
+
+  loginHandler = () =>{
+    this.setState({auth: true});
+  };
   render() {
     console.log("[App.js] render");
     // ---------
@@ -190,6 +195,7 @@ class App extends Component {
             persons={this.state.persons}
             styleBackground={styleBox}
             changed={this.personNameChanged}
+            isAuthenticated = {this.state.auth}
           />
           {/* {this.state.persons.map((newPerson, index) => {
             return (
@@ -254,6 +260,7 @@ class App extends Component {
             buttonClass={btnClass}
             show={this.state.show}
             clicked={this.togglePersonsHandler}
+            login = {this.loginHandler}
           />
         ) : null}
         <button

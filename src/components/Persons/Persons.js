@@ -47,6 +47,7 @@ class Persons extends PureComponent {
             styleBackground={this.props.styleBackground}
             key={person.id}
             changed={(event) => this.props.changed(event, person.id)}
+            isAuth = {this.props.isAuthenticated}
           />
       );
     });

@@ -13,6 +13,8 @@ class Person extends Component {
   constructor(props){
     super(props);
     this.inputElementRef = React.createRef();
+    // React.createRef is a method offerd on the React obj we're importing
+    
   }
 
   state = {
@@ -50,6 +52,7 @@ class Person extends Component {
     // ----
     let showPerson = (
       <Aux>
+        {this.props.isAuth ? <p>Authenticated!</p> : <p>Please log in</p>}
         <p className={classes.white}>
           I'm {this.props.name}, I'm {Math.floor(Math.random() * 100)} years old
           and I am {this.props.job}
